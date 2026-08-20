@@ -10,6 +10,8 @@ function Navbar({ setActivePage }) {
     { number: "03", name: "GALLERY", page: "gallery" },
     { number: "04", name: "TEAM", page: "team" },
     { number: "05", name: "EVENTS", page: "events" },
+      { number: "06", name: "CONTACT", page: "contact" },
+
   ];
 
   const handleNavigation = (page) => {
