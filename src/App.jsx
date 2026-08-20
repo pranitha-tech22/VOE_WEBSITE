@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 
 import Navbar from "./assets/components/Navbar.jsx";
@@ -6,6 +5,7 @@ import Hero from "./assets/components/Hero.jsx";
 import MissionVision from "./assets/components/MissionVision.jsx";
 import Team from "./assets/components/Team.jsx";
 import About from "./assets/components/About.jsx";
+import Contact from "./assets/components/Contact.jsx";
 import Footer from "./assets/components/Footer.jsx";
 
 function App() {
@@ -44,6 +44,23 @@ function App() {
       )}
 
 
+      {/* ================= GALLERY ================= */}
+
+      {activePage === "gallery" && (
+        <div
+          style={{
+            minHeight: "100vh",
+            paddingTop: "120px",
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          <h1>GALLERY</h1>
+          <p>VOE gallery will appear here.</p>
+        </div>
+      )}
+
+
       {/* ================= TEAM ================= */}
 
       {activePage === "team" && (
@@ -68,37 +85,10 @@ function App() {
       )}
 
 
-      {/* ================= GALLERY ================= */}
-
-      {activePage === "gallery" && (
-        <div
-          style={{
-            minHeight: "100vh",
-            paddingTop: "120px",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-          <h1>GALLERY</h1>
-          <p>VOE gallery will appear here.</p>
-        </div>
-      )}
-
-
       {/* ================= CONTACT ================= */}
 
       {activePage === "contact" && (
-        <div
-          style={{
-            minHeight: "100vh",
-            paddingTop: "120px",
-            color: "white",
-            textAlign: "center",
-          }}
-        >
-          <h1>CONTACT</h1>
-          <p>VOE contact information will appear here.</p>
-        </div>
+        <Contact />
       )}
 
 

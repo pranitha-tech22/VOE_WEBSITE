@@ -2,22 +2,18 @@ import "./Footer.css";
 
 function Footer({ setActivePage }) {
 
-  const handleNavigation = (page) => {
+  const handleFooterNavigation = (page) => {
     setActivePage(page);
-
-    // Move the website to the top
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
   };
 
   return (
     <footer className="footer">
 
+      {/* ================= FOOTER CONTAINER ================= */}
+
       <div className="footer-container">
 
-        {/* ================= BRAND ================= */}
+        {/* BRAND */}
 
         <div className="footer-brand">
 
@@ -34,7 +30,7 @@ function Footer({ setActivePage }) {
         </div>
 
 
-        {/* ================= QUICK LINKS ================= */}
+        {/* QUICK LINKS */}
 
         <div className="footer-links">
 
@@ -42,20 +38,28 @@ function Footer({ setActivePage }) {
 
           <div className="footer-link-list">
 
-            <span onClick={() => handleNavigation("home")}>
+            <span onClick={() => handleFooterNavigation("home")}>
               HOME
             </span>
 
-            <span onClick={() => handleNavigation("about")}>
+            <span onClick={() => handleFooterNavigation("about")}>
               ABOUT
             </span>
 
-            <span onClick={() => handleNavigation("team")}>
+            <span onClick={() => handleFooterNavigation("gallery")}>
+              GALLERY
+            </span>
+
+            <span onClick={() => handleFooterNavigation("team")}>
               TEAM
             </span>
 
-            <span onClick={() => handleNavigation("events")}>
+            <span onClick={() => handleFooterNavigation("events")}>
               EVENTS
+            </span>
+
+            <span onClick={() => handleFooterNavigation("contact")}>
+              CONTACT
             </span>
 
           </div>
@@ -63,7 +67,7 @@ function Footer({ setActivePage }) {
         </div>
 
 
-        {/* ================= CONNECT ================= */}
+        {/* CONNECT */}
 
         <div className="footer-connect">
 
