@@ -161,9 +161,9 @@ body,
   transform: translateY(-3px);
 }
 
-/* 3D PLACEHOLDER */
+/* VOE LOGO ENTRANCE */
 
-.hero-3d-placeholder {
+.hero-logo-stage {
   position: relative;
 
   width: min(42vw, 520px);
@@ -186,11 +186,14 @@ body,
   box-shadow:
     0 0 40px rgba(138, 0, 255, 0.2),
     inset 0 0 40px rgba(138, 0, 255, 0.12);
+
+  perspective: 1200px;
+  perspective-origin: 50% 50%;
+  isolation: isolate;
 }
 
-/* Glowing ring */
-
-.placeholder-glow {
+.hero-logo-stage::before {
+  content: "";
   position: absolute;
 
   width: 75%;
@@ -199,48 +202,440 @@ body,
   border-radius: 50%;
 
   border: 1px dashed rgba(193, 92, 255, 0.5);
-
-  animation: rotateGlow 12s linear infinite;
+  opacity: 0.7;
 }
 
-@keyframes rotateGlow {
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+.voe-logo-entrance {
+  position: relative;
+  z-index: 1;
+  width: 82%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  transform-style: preserve-3d;
 }
 
-.placeholder-content {
-  text-align: center;
-
-  z-index: 2;
+.voe-elemental-effects {
+  position: absolute;
+  z-index: 0;
+  inset: -20%;
+  pointer-events: none;
 }
 
-.placeholder-content span {
+.voe-fire-ring,
+.voe-water-ring,
+.voe-electricity {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.voe-fire-ring,
+.voe-water-ring {
+  inset: 0;
+  -webkit-mask: radial-gradient(
+    circle,
+    transparent 54%,
+    #000 57% 70%,
+    transparent 73%
+  );
+  mask: radial-gradient(circle, transparent 54%, #000 57% 70%, transparent 73%);
+}
+
+.voe-fire-ring {
+  background: conic-gradient(
+    from 20deg,
+    transparent 0deg 18deg,
+    rgba(255, 71, 18, 0.15) 24deg,
+    #ff5b1a 44deg,
+    #ffd166 57deg,
+    rgba(255, 66, 12, 0.7) 72deg,
+    transparent 108deg 150deg,
+    rgba(255, 115, 24, 0.9) 184deg,
+    #ffde72 203deg,
+    transparent 236deg 292deg,
+    rgba(255, 57, 14, 0.78) 328deg,
+    transparent 360deg
+  );
+  filter: blur(7px) drop-shadow(0 0 16px rgba(255, 80, 24, 0.72));
+  animation: voe-fire-orbit 5.8s ease-in-out both;
+}
+
+.voe-water-ring {
+  inset: 8%;
+  background: conic-gradient(
+    from 200deg,
+    transparent 0deg 35deg,
+    rgba(58, 217, 255, 0.18) 42deg,
+    #45d9ff 66deg,
+    #c9f7ff 82deg,
+    rgba(33, 135, 255, 0.82) 100deg,
+    transparent 138deg 204deg,
+    rgba(63, 228, 255, 0.88) 236deg,
+    #d4fbff 254deg,
+    transparent 288deg 332deg,
+    rgba(53, 187, 255, 0.68) 350deg
+  );
+  filter: blur(5px) drop-shadow(0 0 15px rgba(58, 217, 255, 0.65));
+  animation: voe-water-orbit 5.8s ease-in-out both;
+}
+
+.voe-electricity {
+  inset: 6%;
+  border: 2px dashed rgba(183, 236, 255, 0.9);
+  box-shadow:
+    0 0 10px #74e5ff,
+    0 0 25px #437cff,
+    inset 0 0 12px rgba(127, 235, 255, 0.75);
+  opacity: 0;
+  filter: blur(0.2px);
+  animation: voe-electric-recombine 1.15s steps(3, end) 4.56s both;
+}
+
+.voe-electricity::before,
+.voe-electricity::after {
+  content: "";
+  position: absolute;
+  inset: -9%;
+  border: 2px solid rgba(216, 252, 255, 0.72);
+  border-radius: 43% 57% 51% 49%;
+  clip-path: polygon(0 43%, 19% 39%, 25% 24%, 39% 35%, 51% 9%, 62% 40%, 84% 32%, 100% 48%, 82% 59%, 72% 82%, 59% 63%, 42% 93%, 33% 61%, 9% 68%);
+}
+
+.voe-electricity::after {
+  transform: rotate(58deg) scale(0.86);
+  opacity: 0.7;
+}
+
+.voe-logo-emblem {
+  position: relative;
+  z-index: 1;
   display: block;
-
-  font-size: 70px;
-
-  font-weight: 800;
-
-  color: #b026ff;
-
-  text-shadow:
-    0 0 15px #b026ff,
-    0 0 40px rgba(176, 38, 255, 0.6);
+  width: 100%;
+  height: auto;
+  transform-origin: center;
+  backface-visibility: visible;
+  will-change: transform, filter;
+  filter: drop-shadow(0 0 16px rgba(193, 92, 255, 0.32));
+  animation: voe-logo-entrance 5.8s cubic-bezier(0.16, 0.86, 0.26, 1) both;
 }
 
-.placeholder-content p {
-  margin-top: 5px;
+.voe-logo-fragments {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  pointer-events: none;
+  transform-style: preserve-3d;
+}
 
-  font-size: 13px;
+.voe-logo-fragment {
+  position: absolute;
+  inset: 0;
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  opacity: 0;
+  transform-origin: center;
+  will-change: transform, opacity, filter;
+  animation: voe-logo-fragment 2.55s cubic-bezier(0.22, 0.8, 0.27, 1) 2.67s both;
+}
 
-  letter-spacing: 5px;
+.fragment-top {
+  --burst-x: 3%;
+  --burst-y: -64%;
+  --burst-rotation: 25deg;
+  --burst-scale: 0.84;
+  clip-path: polygon(13% 0, 87% 0, 94% 22%, 82% 36%, 18% 36%, 6% 22%);
+}
 
-  color: #d8c5e8;
+.fragment-upper-left {
+  --burst-x: -56%;
+  --burst-y: -37%;
+  --burst-rotation: -33deg;
+  --burst-scale: 0.78;
+  clip-path: polygon(0 18%, 28% 12%, 31% 39%, 23% 57%, 0 61%);
+}
+
+.fragment-upper-right {
+  --burst-x: 57%;
+  --burst-y: -34%;
+  --burst-rotation: 31deg;
+  --burst-scale: 0.8;
+  clip-path: polygon(72% 12%, 100% 18%, 100% 61%, 77% 57%, 69% 39%);
+}
+
+.fragment-left {
+  --burst-x: -67%;
+  --burst-y: 8%;
+  --burst-rotation: -26deg;
+  --burst-scale: 0.74;
+  clip-path: polygon(0 38%, 27% 35%, 28% 67%, 0 70%);
+}
+
+.fragment-right {
+  --burst-x: 67%;
+  --burst-y: 7%;
+  --burst-rotation: 27deg;
+  --burst-scale: 0.74;
+  clip-path: polygon(73% 35%, 100% 38%, 100% 70%, 72% 67%);
+}
+
+.fragment-inner-left {
+  --burst-x: -38%;
+  --burst-y: 19%;
+  --burst-rotation: -19deg;
+  --burst-scale: 0.83;
+  clip-path: polygon(24% 32%, 46% 29%, 47% 66%, 26% 70%, 18% 55%);
+}
+
+.fragment-inner-center {
+  --burst-x: 2%;
+  --burst-y: -30%;
+  --burst-rotation: 8deg;
+  --burst-scale: 0.76;
+  clip-path: polygon(43% 29%, 58% 29%, 61% 67%, 42% 67%);
+}
+
+.fragment-inner-right {
+  --burst-x: 39%;
+  --burst-y: 20%;
+  --burst-rotation: 20deg;
+  --burst-scale: 0.82;
+  clip-path: polygon(55% 29%, 77% 33%, 82% 55%, 74% 70%, 54% 67%);
+}
+
+.fragment-bottom-left {
+  --burst-x: -38%;
+  --burst-y: 58%;
+  --burst-rotation: -28deg;
+  --burst-scale: 0.78;
+  clip-path: polygon(0 62%, 45% 66%, 51% 100%, 9% 100%);
+}
+
+.fragment-bottom-right {
+  --burst-x: 39%;
+  --burst-y: 57%;
+  --burst-rotation: 29deg;
+  --burst-scale: 0.8;
+  clip-path: polygon(55% 66%, 100% 62%, 91% 100%, 49% 100%);
+}
+
+.fragment-badge {
+  --burst-x: 4%;
+  --burst-y: 42%;
+  --burst-rotation: 4deg;
+  --burst-scale: 0.72;
+  clip-path: ellipse(19% 9% at 51% 79%);
+}
+
+.voe-logo-sheen {
+  position: absolute;
+  z-index: 3;
+  inset: 0;
+  overflow: hidden;
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.voe-logo-sheen::after {
+  content: "";
+  position: absolute;
+  inset: -15%;
+  background: linear-gradient(
+    112deg,
+    transparent 42%,
+    rgba(255, 255, 255, 0.42) 50%,
+    transparent 58%
+  );
+  transform: translateX(-145%);
+  opacity: 0;
+  animation: voe-logo-sheen 0.72s ease-out 5.02s both;
+}
+
+@keyframes voe-logo-entrance {
+  0% {
+    transform: translate3d(58px, 14px, -340px) rotateY(-118deg) rotateZ(-5deg)
+      scale(0.5);
+    filter: blur(2px) drop-shadow(0 0 7px rgba(193, 92, 255, 0.18));
+  }
+
+  20% {
+    transform: translate3d(22px, 4px, -175px) rotateY(-68deg) rotateZ(-2deg)
+      scale(0.74);
+    filter: blur(0.7px) drop-shadow(0 0 12px rgba(193, 92, 255, 0.26));
+  }
+
+  38% {
+    transform: translate3d(-3px, 0, -48px) rotateY(-22deg) rotateZ(0deg)
+      scale(0.95);
+    filter: drop-shadow(0 0 17px rgba(193, 92, 255, 0.34));
+  }
+
+  44% {
+    transform: translate3d(0, 0, 10px) rotateY(3deg) scale(1.018);
+    filter: drop-shadow(0 0 21px rgba(193, 92, 255, 0.42));
+  }
+
+  46% {
+    transform: translate3d(0, 0, 0) rotateY(0) rotateZ(0) scale(1);
+    opacity: 1;
+  }
+
+  49%,
+  85% {
+    transform: translate3d(0, 0, 0) rotateY(0) rotateZ(0) scale(1);
+    opacity: 0;
+  }
+
+  87% {
+    transform: translate3d(0, 0, 12px) rotateY(0) rotateZ(0) scale(1.025);
+    opacity: 1;
+    filter: brightness(1.35) drop-shadow(0 0 30px rgba(116, 229, 255, 0.86));
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0) rotateY(0) rotateZ(0) scale(1);
+    opacity: 1;
+    filter: drop-shadow(0 0 18px rgba(193, 92, 255, 0.36));
+  }
+}
+
+@keyframes voe-logo-fragment {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotateZ(0) scale(1);
+    filter: drop-shadow(0 0 2px rgba(255, 255, 255, 0));
+  }
+
+  5% {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateZ(0) scale(1);
+  }
+
+  18%,
+  48% {
+    opacity: 1;
+    transform: translate3d(var(--burst-x), var(--burst-y), 90px)
+      rotateZ(var(--burst-rotation)) scale(var(--burst-scale));
+    filter: brightness(1.15) drop-shadow(0 0 15px rgba(116, 229, 255, 0.78));
+  }
+
+  78% {
+    opacity: 1;
+    transform: translate3d(0, 0, 14px) rotateZ(0) scale(1.015);
+    filter: brightness(1.42) drop-shadow(0 0 25px rgba(137, 234, 255, 0.95));
+  }
+
+  92%,
+  100% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) rotateZ(0) scale(1);
+  }
+}
+
+@keyframes voe-fire-orbit {
+  0% {
+    opacity: 0;
+    transform: rotate(-55deg) scale(0.52);
+  }
+
+  13% {
+    opacity: 0.92;
+    transform: rotate(26deg) scale(1);
+  }
+
+  42% {
+    opacity: 0.75;
+    transform: rotate(210deg) scale(0.98);
+  }
+
+  54% {
+    opacity: 1;
+    transform: rotate(305deg) scale(1.18);
+  }
+
+  74% {
+    opacity: 0.82;
+    transform: rotate(432deg) scale(1.02);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(540deg) scale(0.82);
+  }
+}
+
+@keyframes voe-water-orbit {
+  0% {
+    opacity: 0;
+    transform: rotate(48deg) scale(0.48);
+  }
+
+  13% {
+    opacity: 0.9;
+    transform: rotate(-24deg) scale(1);
+  }
+
+  42% {
+    opacity: 0.75;
+    transform: rotate(-196deg) scale(1.04);
+  }
+
+  54% {
+    opacity: 1;
+    transform: rotate(-294deg) scale(1.2);
+  }
+
+  74% {
+    opacity: 0.82;
+    transform: rotate(-420deg) scale(1.05);
+  }
+
+  100% {
+    opacity: 0;
+    transform: rotate(-528deg) scale(0.84);
+  }
+}
+
+@keyframes voe-electric-recombine {
+  0%,
+  18% {
+    opacity: 0;
+    transform: scale(0.65) rotate(-14deg);
+  }
+
+  28%,
+  68% {
+    opacity: 1;
+    transform: scale(1.12) rotate(14deg);
+  }
+
+  82% {
+    opacity: 0.45;
+    transform: scale(0.94) rotate(-5deg);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1) rotate(0);
+  }
+}
+
+@keyframes voe-logo-sheen {
+  0% {
+    transform: translateX(-145%);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: translateX(145%);
+    opacity: 0;
+  }
 }
 
 /* MOBILE */
@@ -267,7 +662,7 @@ body,
     justify-content: center;
   }
 
-  .hero-3d-placeholder {
+  .hero-logo-stage {
     width: 330px;
     height: 330px;
   }
@@ -296,12 +691,33 @@ body,
     width: 180px;
   }
 
-  .hero-3d-placeholder {
+  .hero-logo-stage {
     width: 270px;
     height: 270px;
   }
 
-  .placeholder-content span {
-    font-size: 55px;
+  .voe-logo-entrance {
+    width: 86%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voe-logo-emblem,
+  .voe-logo-fragment,
+  .voe-fire-ring,
+  .voe-water-ring,
+  .voe-electricity,
+  .voe-logo-sheen::after {
+    animation: none;
+  }
+
+  .voe-logo-fragments,
+  .voe-elemental-effects {
+    display: none;
+  }
+
+  .voe-logo-emblem {
+    transform: none;
+    will-change: auto;
   }
 }

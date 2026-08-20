@@ -1,4 +1,19 @@
 import "./Hero.css";
+import voeLogo from "../voe-logo.png";
+
+const logoFragments = [
+  "fragment-top",
+  "fragment-upper-left",
+  "fragment-upper-right",
+  "fragment-left",
+  "fragment-right",
+  "fragment-inner-left",
+  "fragment-inner-center",
+  "fragment-inner-right",
+  "fragment-bottom-left",
+  "fragment-bottom-right",
+  "fragment-badge",
+];
 
 function Hero() {
   return (
@@ -31,13 +46,31 @@ function Hero() {
 
       </div>
 
-      {/* 3D Animation Area — Mohit's work will go here */}
-      <div className="hero-3d-placeholder">
-        <div className="placeholder-glow"></div>
+      <div className="hero-logo-stage">
+        <div className="voe-logo-entrance">
+          <div className="voe-elemental-effects" aria-hidden="true">
+            <span className="voe-fire-ring"></span>
+            <span className="voe-water-ring"></span>
+            <span className="voe-electricity"></span>
+          </div>
 
-        <div className="placeholder-content">
-          <span>3D</span>
-          <p>EXPERIENCE</p>
+          <img
+            className="voe-logo-emblem"
+            src={voeLogo}
+            alt="Voice of Easwarians logo"
+          />
+
+          <span className="voe-logo-fragments" aria-hidden="true">
+            {logoFragments.map((fragment) => (
+              <span
+                className={`voe-logo-fragment ${fragment}`}
+                key={fragment}
+                style={{ backgroundImage: `url(${voeLogo})` }}
+              ></span>
+            ))}
+          </span>
+
+          <span className="voe-logo-sheen" aria-hidden="true"></span>
         </div>
       </div>
 
