@@ -214,11 +214,10 @@ body,
   place-items: center;
   transform-style: preserve-3d;
 }
-
 .voe-elemental-effects {
   position: absolute;
   z-index: 0;
-  inset: -20%;
+  inset: -10%;
   pointer-events: none;
 }
 

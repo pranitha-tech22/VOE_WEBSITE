@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import { useState, useEffect } from "react";
 
 import Navbar from "./assets/components/Navbar.jsx";
 import Hero from "./assets/components/Hero.jsx";
@@ -10,11 +11,24 @@ import Footer from "./assets/components/Footer.jsx";
 function App() {
   const [activePage, setActivePage] = useState("home");
 
+  // Scroll to top whenever a new page is selected
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [activePage]);
+
   return (
     <>
+      {/* ================= NAVBAR ================= */}
+
       <Navbar setActivePage={setActivePage} />
 
-      {/* HOME */}
+
+      {/* ================= HOME ================= */}
+
       {activePage === "home" && (
         <>
           <Hero />
@@ -22,14 +36,75 @@ function App() {
         </>
       )}
 
-      {/* ABOUT */}
-      {activePage === "about" && <About />}
 
-      {/* TEAM */}
-      {activePage === "team" && <Team />}
+      {/* ================= ABOUT ================= */}
 
-      {/* FOOTER - VISIBLE ON EVERY PAGE */}
-      <Footer />
+      {activePage === "about" && (
+        <About />
+      )}
+
+
+      {/* ================= TEAM ================= */}
+
+      {activePage === "team" && (
+        <Team />
+      )}
+
+
+      {/* ================= EVENTS ================= */}
+
+      {activePage === "events" && (
+        <div
+          style={{
+            minHeight: "100vh",
+            paddingTop: "120px",
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          <h1>EVENTS</h1>
+          <p>Upcoming VOE events will appear here.</p>
+        </div>
+      )}
+
+
+      {/* ================= GALLERY ================= */}
+
+      {activePage === "gallery" && (
+        <div
+          style={{
+            minHeight: "100vh",
+            paddingTop: "120px",
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          <h1>GALLERY</h1>
+          <p>VOE gallery will appear here.</p>
+        </div>
+      )}
+
+
+      {/* ================= CONTACT ================= */}
+
+      {activePage === "contact" && (
+        <div
+          style={{
+            minHeight: "100vh",
+            paddingTop: "120px",
+            color: "white",
+            textAlign: "center",
+          }}
+        >
+          <h1>CONTACT</h1>
+          <p>VOE contact information will appear here.</p>
+        </div>
+      )}
+
+
+      {/* ================= FOOTER ================= */}
+
+      <Footer setActivePage={setActivePage} />
     </>
   );
 }

@@ -1,13 +1,26 @@
 import "./Footer.css";
 
-function Footer() {
+function Footer({ setActivePage }) {
+
+  const handleNavigation = (page) => {
+    setActivePage(page);
+
+    // Move the website to the top
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <footer className="footer">
 
       <div className="footer-container">
 
-        {/* Brand */}
+        {/* ================= BRAND ================= */}
+
         <div className="footer-brand">
+
           <h2>VOE</h2>
 
           <p>
@@ -17,25 +30,41 @@ function Footer() {
           <span>
             Your Voice. Our Campus. One Community.
           </span>
+
         </div>
 
 
-        {/* Quick Links */}
+        {/* ================= QUICK LINKS ================= */}
+
         <div className="footer-links">
 
           <h3>QUICK LINKS</h3>
 
           <div className="footer-link-list">
-            <span>HOME</span>
-            <span>ABOUT</span>
-            <span>TEAM</span>
-            <span>EVENTS</span>
+
+            <span onClick={() => handleNavigation("home")}>
+              HOME
+            </span>
+
+            <span onClick={() => handleNavigation("about")}>
+              ABOUT
+            </span>
+
+            <span onClick={() => handleNavigation("team")}>
+              TEAM
+            </span>
+
+            <span onClick={() => handleNavigation("events")}>
+              EVENTS
+            </span>
+
           </div>
 
         </div>
 
 
-        {/* Connect */}
+        {/* ================= CONNECT ================= */}
+
         <div className="footer-connect">
 
           <h3>CONNECT</h3>
@@ -46,23 +75,26 @@ function Footer() {
           </p>
 
           <div className="footer-socials">
-  <a
-    href="https://www.instagram.com/voe.eec"
-    target="_blank"
-    rel="noopener noreferrer"
-  >
-    INSTAGRAM
-  </a>
 
-  <span>LINKEDIN</span>
-</div>
+            <a
+              href="https://www.instagram.com/voe.eec"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              INSTAGRAM
+            </a>
+
+            <span>LINKEDIN</span>
+
+          </div>
 
         </div>
 
       </div>
 
 
-      {/* Bottom */}
+      {/* ================= FOOTER BOTTOM ================= */}
+
       <div className="footer-bottom">
 
         <span>
