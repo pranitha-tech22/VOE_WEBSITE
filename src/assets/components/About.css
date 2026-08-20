@@ -1,0 +1,354 @@
+/* =========================
+   ABOUT PAGE
+========================= */
+
+.about-page {
+  min-height: 100vh;
+  padding: 130px 8% 100px;
+
+  background: #070510;
+  color: white;
+}
+
+
+/* =========================
+   ABOUT INTRO
+========================= */
+
+.about-intro {
+  max-width: 1000px;
+  margin: 0 auto 100px;
+  text-align: center;
+}
+
+.about-label {
+  margin: 0 0 18px;
+
+  color: #c77dff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 5px;
+}
+
+.about-intro h1 {
+  margin: 0 0 30px;
+
+  font-size: clamp(45px, 7vw, 80px);
+  line-height: 1.05;
+
+  font-weight: 800;
+}
+
+.about-intro h1 span {
+  color: #b026ff;
+
+  text-shadow:
+    0 0 10px #b026ff,
+    0 0 25px rgba(176, 38, 255, 0.6);
+}
+
+.about-description {
+  max-width: 850px;
+  margin: 0 auto 18px;
+
+  color: #cfcfe0;
+
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+
+/* =========================
+   CORE VALUES
+========================= */
+
+.about-values {
+  max-width: 1200px;
+  margin: 0 auto 120px;
+
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 20px;
+}
+
+.about-value-card {
+  position: relative;
+
+  padding: 35px 25px;
+
+  min-height: 210px;
+
+  background: rgba(20, 10, 35, 0.75);
+
+  border: 1px solid rgba(176, 38, 255, 0.3);
+
+  border-radius: 18px;
+
+  transition: 0.35s ease;
+
+  overflow: hidden;
+}
+
+.about-value-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+
+  background: #b026ff;
+
+  box-shadow:
+    0 0 12px #b026ff,
+    0 0 25px rgba(176, 38, 255, 0.5);
+}
+
+.about-value-card:hover {
+  transform: translateY(-8px);
+
+  border-color: #b026ff;
+
+  box-shadow:
+    0 0 25px rgba(176, 38, 255, 0.2);
+}
+
+.about-value-card > span {
+  display: block;
+
+  margin-bottom: 25px;
+
+  color: #777;
+
+  font-size: 12px;
+  letter-spacing: 2px;
+}
+
+.about-value-card h2 {
+  margin: 0 0 15px;
+
+  font-size: 25px;
+  letter-spacing: 3px;
+
+  color: #b026ff;
+
+  text-shadow:
+    0 0 8px rgba(176, 38, 255, 0.5);
+}
+
+.about-value-card p {
+  margin: 0;
+
+  color: #cfcfe0;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* =========================
+   WHAT WE DO
+========================= */
+
+.about-activities {
+  max-width: 1200px;
+  margin: 0 auto 120px;
+}
+
+.activities-heading {
+  margin-bottom: 50px;
+}
+
+.activities-heading p {
+  margin: 0 0 15px;
+
+  color: #c77dff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  letter-spacing: 5px;
+}
+
+.activities-heading h2 {
+  margin: 0;
+
+  font-size: clamp(35px, 5vw, 60px);
+
+  line-height: 1.1;
+}
+
+.activities-heading h2 span {
+  color: #b026ff;
+
+  text-shadow:
+    0 0 10px #b026ff,
+    0 0 25px rgba(176, 38, 255, 0.5);
+}
+
+
+/* =========================
+   ACTIVITIES GRID
+========================= */
+
+.activities-grid {
+  display: grid;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  gap: 20px;
+}
+
+.activity {
+  padding: 30px;
+
+  min-height: 190px;
+
+  border-left: 2px solid rgba(176, 38, 255, 0.4);
+
+  background: rgba(20, 10, 35, 0.45);
+
+  transition: 0.3s ease;
+}
+
+.activity:hover {
+  border-left-color: #b026ff;
+
+  background: rgba(176, 38, 255, 0.08);
+
+  transform: translateX(5px);
+}
+
+.activity > span {
+  color: #777;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+}
+
+.activity h3 {
+  margin: 18px 0 12px;
+
+  font-size: 17px;
+
+  letter-spacing: 1px;
+
+  color: white;
+}
+
+.activity p {
+  margin: 0;
+
+  color: #aaaabe;
+
+  font-size: 14px;
+
+  line-height: 1.7;
+}
+
+
+/* =========================
+   WHY VOE
+========================= */
+
+.why-voe {
+  max-width: 900px;
+
+  margin: 0 auto;
+
+  padding: 70px 40px;
+
+  text-align: center;
+
+  border-top: 1px solid rgba(176, 38, 255, 0.25);
+  border-bottom: 1px solid rgba(176, 38, 255, 0.25);
+}
+
+.why-voe h2 {
+  margin: 0 0 25px;
+
+  font-size: clamp(35px, 5vw, 55px);
+
+  line-height: 1.15;
+}
+
+.why-voe h2 span {
+  color: #b026ff;
+
+  text-shadow:
+    0 0 10px #b026ff,
+    0 0 25px rgba(176, 38, 255, 0.5);
+}
+
+.why-voe > p:last-child {
+  max-width: 700px;
+
+  margin: auto;
+
+  color: #cfcfe0;
+
+  font-size: 16px;
+
+  line-height: 1.8;
+}
+
+
+/* =========================
+   TABLET
+========================= */
+
+@media (max-width: 1000px) {
+
+  .about-values {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .activities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+  .about-page {
+    padding: 110px 5% 70px;
+  }
+
+  .about-intro {
+    margin-bottom: 70px;
+  }
+
+  .about-description {
+    font-size: 15px;
+  }
+
+  .about-values {
+    grid-template-columns: 1fr;
+
+    margin-bottom: 80px;
+  }
+
+  .activities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-activities {
+    margin-bottom: 80px;
+  }
+
+  .why-voe {
+    padding: 50px 20px;
+  }
+}
