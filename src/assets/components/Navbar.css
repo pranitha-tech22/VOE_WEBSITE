@@ -92,12 +92,31 @@
 
   color: #b026ff;
 
+  background: transparent;
+  border: none;
+
+  padding: 0;
+  margin: 0;
+
+  cursor: pointer;
+
   text-decoration: none;
 
   text-shadow:
     0 0 5px #b026ff,
     0 0 15px #b026ff,
     0 0 30px #8a2be2;
+
+  transition: 0.3s ease;
+}
+
+.navbar-logo:hover {
+  transform: scale(1.05);
+
+  text-shadow:
+    0 0 8px #b026ff,
+    0 0 20px #b026ff,
+    0 0 35px #8a2be2;
 }
 
 
@@ -205,8 +224,15 @@
   gap: 8px;
 }
 
+
+/* IMPORTANT:
+   These are now BUTTONS instead of <a> tags.
+*/
+
 .menu-item {
   position: relative;
+
+  width: 100%;
 
   display: grid;
 
@@ -216,9 +242,19 @@
 
   padding: 15px 10px;
 
-  text-decoration: none;
+  margin: 0;
+
+  background: transparent;
+
+  border: none;
 
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  cursor: pointer;
+
+  text-align: left;
+
+  font-family: inherit;
 
   transition: 0.35s ease;
 }

@@ -1,23 +1,28 @@
 import { useState } from "react";
 import "./Navbar.css";
 
-function Navbar() {
+function Navbar({ setActivePage }) {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const navItems = [
-  { number: "01", name: "HOME", href: "#home" },
-  { number: "02", name: "ABOUT", href: "#about" },
-  { number: "03", name: "GALLERY", href: "#gallery" },
-  { number: "04", name: "TEAM", href: "#team" },
-  { number: "05", name: "EVENTS", href: "#events" },
-];
+    { number: "01", name: "HOME", page: "home" },
+    { number: "02", name: "ABOUT", page: "about" },
+    { number: "03", name: "GALLERY", page: "gallery" },
+    { number: "04", name: "TEAM", page: "team" },
+    { number: "05", name: "EVENTS", page: "events" },
+  ];
+
+  const handleNavigation = (page) => {
+    console.log("Clicked:", page);
+
+    setActivePage(page);
+    setMenuOpen(false);
+  };
 
   return (
     <>
-      {/* ================= NAVBAR ================= */}
       <nav className="navbar">
 
-        {/* Hamburger Button - LEFT */}
         <button
           className={`menu-btn ${menuOpen ? "active" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -28,42 +33,35 @@ function Navbar() {
           <span></span>
         </button>
 
-        {/* VOE Logo */}
-        <a href="#home" className="navbar-logo">
+        <button
+          className="navbar-logo"
+          onClick={() => handleNavigation("home")}
+        >
           VOE
-        </a>
+        </button>
 
       </nav>
 
-
-      {/* ================= MENU OVERLAY ================= */}
       <div
         className={`menu-overlay ${menuOpen ? "show" : ""}`}
         onClick={() => setMenuOpen(false)}
       ></div>
 
-
-      {/* ================= SIDE MENU ================= */}
       <div className={`side-menu ${menuOpen ? "open" : ""}`}>
 
-        {/* Menu Header */}
         <div className="menu-header">
           <span>NAVIGATION</span>
           <span className="menu-line"></span>
         </div>
 
-
-        {/* Navigation Items */}
         <div className="side-menu-content">
 
           {navItems.map((item) => (
-            <a
+            <button
               key={item.name}
-              href={item.href}
               className="menu-item"
-              onClick={() => setMenuOpen(false)}
+              onClick={() => handleNavigation(item.page)}
             >
-
               <span className="menu-number">
                 {item.number}
               </span>
@@ -75,14 +73,11 @@ function Navbar() {
               <span className="menu-arrow">
                 ↗
               </span>
-
-            </a>
+            </button>
           ))}
 
         </div>
 
-
-        {/* Menu Footer */}
         <div className="menu-footer">
           <span>VOICE OF EASWARI</span>
         </div>
