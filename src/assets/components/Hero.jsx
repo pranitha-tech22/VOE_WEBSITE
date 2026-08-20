@@ -7,7 +7,7 @@ function Hero() {
       <div className="hero-content">
 
         <p className="hero-tag">
-          TECH • INNOVATE • CONNECT
+  YOUR VOICE • OUR CAMPUS • ONE COMMUNITY
         </p>
 
         <h1 className="hero-title">
