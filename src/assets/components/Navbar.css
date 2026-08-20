@@ -1,0 +1,341 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 80px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding: 0 40px;
+  gap: 18px;
+
+  background: rgba(5, 5, 15, 0.75);
+  backdrop-filter: blur(15px);
+
+  border-bottom: 1px solid rgba(176, 38, 255, 0.2);
+
+  z-index: 1000;
+}
+
+
+/* =========================
+   HAMBURGER
+========================= */
+
+.menu-btn {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 6px;
+
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+
+  z-index: 1100;
+}
+
+.menu-btn span {
+  width: 30px;
+  height: 3px;
+
+  background: #b026ff;
+
+  border-radius: 10px;
+
+  box-shadow:
+    0 0 6px #b026ff,
+    0 0 15px #b026ff;
+
+  transition: 0.3s ease;
+}
+
+
+/* Hamburger → X */
+
+.menu-btn.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-btn.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* =========================
+   VOE LOGO
+========================= */
+
+.navbar-logo {
+  font-size: 30px;
+  font-weight: 800;
+
+  letter-spacing: 4px;
+
+  color: #b026ff;
+
+  text-decoration: none;
+
+  text-shadow:
+    0 0 5px #b026ff,
+    0 0 15px #b026ff,
+    0 0 30px #8a2be2;
+}
+
+
+/* =========================
+   OVERLAY
+========================= */
+
+.menu-overlay {
+  position: fixed;
+
+  inset: 0;
+
+  background: rgba(0, 0, 0, 0.65);
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition: 0.4s ease;
+
+  z-index: 1005;
+}
+
+.menu-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* =========================
+   SIDE MENU
+========================= */
+
+.side-menu {
+  position: fixed;
+
+  top: 0;
+  right: -430px;
+
+  width: 400px;
+  height: 100vh;
+
+  padding: 110px 45px 35px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(20, 5, 35, 0.98),
+      rgba(5, 5, 15, 0.98)
+    );
+
+  border-left: 1px solid rgba(176, 38, 255, 0.5);
+
+  box-shadow:
+    -10px 0 50px rgba(176, 38, 255, 0.25);
+
+  z-index: 1050;
+
+  transition: right 0.5s cubic-bezier(0.77, 0, 0.18, 1);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.side-menu.open {
+  right: 0;
+}
+
+
+/* =========================
+   MENU HEADER
+========================= */
+
+.menu-header {
+  display: flex;
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 50px;
+
+  color: #aaa;
+
+  font-size: 12px;
+
+  letter-spacing: 4px;
+}
+
+.menu-line {
+  height: 1px;
+
+  flex: 1;
+
+  background: rgba(176, 38, 255, 0.4);
+}
+
+
+/* =========================
+   MENU ITEMS
+========================= */
+
+.side-menu-content {
+  display: flex;
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.menu-item {
+  position: relative;
+
+  display: grid;
+
+  grid-template-columns: 40px 1fr 30px;
+
+  align-items: center;
+
+  padding: 15px 10px;
+
+  text-decoration: none;
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+
+  transition: 0.35s ease;
+}
+
+
+/* Number */
+
+.menu-number {
+  font-size: 12px;
+
+  color: #777;
+
+  letter-spacing: 1px;
+
+  transition: 0.3s ease;
+}
+
+
+/* Main text */
+
+.menu-name {
+  font-size: 27px;
+
+  font-weight: 700;
+
+  letter-spacing: 3px;
+
+  color: white;
+
+  transition: 0.3s ease;
+}
+
+
+/* Arrow */
+
+.menu-arrow {
+  font-size: 22px;
+
+  color: #666;
+
+  transition: 0.3s ease;
+}
+
+
+/* =========================
+   HOVER EFFECT
+========================= */
+
+.menu-item:hover {
+  padding-left: 20px;
+
+  border-bottom-color: #b026ff;
+}
+
+.menu-item:hover .menu-number {
+  color: #b026ff;
+}
+
+.menu-item:hover .menu-name {
+  color: #b026ff;
+
+  text-shadow:
+    0 0 8px #b026ff,
+    0 0 20px rgba(176, 38, 255, 0.7);
+}
+
+.menu-item:hover .menu-arrow {
+  color: #b026ff;
+
+  transform: translate(5px, -5px);
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+.menu-footer {
+  margin-top: auto;
+
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 20px;
+
+  border-top: 1px solid rgba(176, 38, 255, 0.2);
+
+  font-size: 9px;
+
+  letter-spacing: 2px;
+
+  color: #666;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+  .navbar {
+    padding: 0 20px;
+  }
+
+  .side-menu {
+    width: 100%;
+    right: -100%;
+
+    padding: 110px 30px 30px;
+  }
+
+  .side-menu.open {
+    right: 0;
+  }
+
+  .menu-name {
+    font-size: 23px;
+  }
+}
