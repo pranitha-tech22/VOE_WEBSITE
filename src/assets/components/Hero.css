@@ -69,11 +69,16 @@ body,
 .hero-title small {
   display: block;
 
-  font-size: clamp(20px, 2.5vw, 32px);
+  font-size: clamp(18px, 2.2vw, 28px);
   font-weight: 700;
 
-  letter-spacing: 6px;
-  color: white;
+  letter-spacing: 5px;
+
+  color: #f4eaff;
+
+  text-shadow:
+    0 0 6px rgba(244, 234, 255, 0.35),
+    0 0 14px rgba(176, 38, 255, 0.2);
 
   margin-bottom: 14px;
 }
@@ -81,18 +86,19 @@ body,
 .hero-title span {
   display: block;
 
-  font-size: clamp(50px, 7vw, 95px);
+  font-size: clamp(42px, 5.5vw, 72px);
   font-weight: 800;
 
   line-height: 0.95;
 
   color: transparent;
 
-  -webkit-text-stroke: 1px #b026ff;
+  -webkit-text-stroke: 1px #c15cff;
 
   text-shadow:
-    0 0 10px rgba(176, 38, 255, 0.6),
-    0 0 30px rgba(176, 38, 255, 0.3);
+    0 0 12px rgba(176, 38, 255, 0.8),
+    0 0 28px rgba(176, 38, 255, 0.5),
+    0 0 50px rgba(176, 38, 255, 0.25);
 }
 
 
@@ -131,12 +137,33 @@ body,
 }
 
 .primary-btn {
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 25px;
+
+  border: 1px solid #8a00ff;
+  border-radius: 30px;
 
   background: #8a00ff;
 
+  color: white;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
   box-shadow:
     0 0 15px rgba(138, 0, 255, 0.6);
+
+  transition: 0.3s ease;
 }
 
 .primary-btn:hover {
@@ -148,11 +175,39 @@ body,
 }
 
 .secondary-btn {
-  color: white;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 13px 25px;
 
   border: 1px solid #8a00ff;
+  border-radius: 30px;
 
   background: rgba(138, 0, 255, 0.08);
+
+  color: white;
+
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  cursor: pointer;
+
+  box-sizing: border-box;
+
+  transition: 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: rgba(138, 0, 255, 0.2);
+
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 0 15px rgba(138, 0, 255, 0.35);
 }
 
 .secondary-btn:hover {

@@ -31,7 +31,7 @@ function App() {
 
       {activePage === "home" && (
         <>
-          <Hero />
+          <Hero setActivePage={setActivePage} />
           <MissionVision />
         </>
       )}

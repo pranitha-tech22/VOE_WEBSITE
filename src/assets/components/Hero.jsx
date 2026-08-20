@@ -15,7 +15,7 @@ const logoFragments = [
   "fragment-badge",
 ];
 
-function Hero() {
+function Hero({ setActivePage }) {
   return (
     <section className="hero" id="home">
 
@@ -39,9 +39,12 @@ function Hero() {
             Explore Events
           </a>
 
-          <a href="#about" className="secondary-btn">
-            About VOE
-          </a>
+          <button
+  className="secondary-btn"
+  onClick={() => setActivePage("about")}
+>
+  ABOUT VOE
+</button>
         </div>
 
       </div>
